@@ -37,3 +37,12 @@ export default App;
 // Need to be able to get data to any component in our hierarchy
 // Need to be able to separate our view logic from business logic
 // Need to be able to split up business logic
+
+// Redux
+// Excellent Documentation
+// Well-known design patterns
+// Tremendous amount of open source libs
+
+// Context
+// Ne need for an extra lib
+// Hard to build a 'store' component with cross cutting concerns
