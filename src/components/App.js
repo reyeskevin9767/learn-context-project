@@ -1,7 +1,8 @@
 import React from 'react';
 import UserCreate from './UserCreate';
-import LanguageContext from '../contexts/LanguageContext';
+import { LanguageStore } from '../contexts/LanguageContext';
 import ColorContext from '../contexts/ColorContext';
+import LanguageSelctor from '../components/LangaugeSelector';
 
 // LanguageContext.Provider is another way to pass data through context
 
@@ -10,31 +11,15 @@ import ColorContext from '../contexts/ColorContext';
 class App extends React.Component {
   state = { language: 'english' };
 
-  onLanguageChnage = (language) => {
-    this.setState({ language });
-  };
-
-
-
   render() {
     return (
       <div className="ui container">
-        <div>
-          Select a language:
-          <i
-            className="flag us"
-            onClick={() => this.onLanguageChnage('english')}
-          />
-          <i
-            className="flag nl"
-            onClick={() => this.onLanguageChnage('dutch')}
-          />
-        </div>
-        <ColorContext.Provider value="primary">
-          <LanguageContext.Provider value={this.state.language}>
+        <LanguageStore>
+          <LanguageSelctor />
+          <ColorContext.Provider value="primary">
             <UserCreate />
-          </LanguageContext.Provider>
-        </ColorContext.Provider>
+          </ColorContext.Provider>
+        </LanguageStore>
       </div>
     );
   }
@@ -47,3 +32,8 @@ export default App;
 
 // Context System
 // Gets data from a parent component to any nested child component
+
+// Use Context instead of Redux
+// Need to be able to get data to any component in our hierarchy
+// Need to be able to separate our view logic from business logic
+// Need to be able to split up business logic
